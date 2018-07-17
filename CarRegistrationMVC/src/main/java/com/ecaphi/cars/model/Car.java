@@ -1,14 +1,11 @@
 package com.ecaphi.cars.model;
 
 import javax.persistence.Column;
-//import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-//import com.ecaphi.cars.StringIdConvert;
 
 @Entity
 @Table(name="cars")
@@ -17,7 +14,6 @@ public class Car {
 	@Id
 	@Column(name="CAR_ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	//@Convert(converter = StringIdConvert.class)
 	private int carId;
 	
 	@Column(name="MANUFACTURER")
@@ -43,7 +39,6 @@ public class Car {
 	public void setCarId(String carId){
 		this.carId = Integer.parseInt(carId);
 	}
-	
 	
 	public String getCity() {
 		return city;
