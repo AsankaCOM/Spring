@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add Car</title>
+</head>
+<body>
+<h1>Add Car</h1>
+<form action="#" th:action="@{addCars}" th:object="${car}" method="post">
+<table>
+	<tr>
+		<td>Manufacturer:</td>
+		<!-- <td><form:input path="manufacturer"/></td> -->
+		<td><input type="text" name="manufacturer"/></td>
+	</tr>
+	
+	<tr>
+		<td>Model:</td>
+		<!-- <td><form:input path="model"/></td> -->
+		<td><input type="text" name="model"/></td>
+	</tr>
+	<tr>
+		<td>City Name:</td>
+		<!-- <td><form:input path="city"/></td> -->
+		<td><input type="text" name="city"/></td>
+	</tr>
+	<tr>
+		<td>Registration Number:</td>
+		<!-- <td><form:input path="registrationNumber"/></td> -->
+		<td><input type="text" name="registrationNumber"/></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><button type="submit">Save</button></td>
+	</tr>
+</table>
+
+</form:form>
+</body>
+</html>
+
+
+<!-- 
+<form th:action="@{/addCars}" method="post">
+      <input type="text" th:value="${foo.name}" name="name"/>
+      <input type="text" th:value="${bar.status}" name="status"/>
+      <button type="submit">Go</button>
+</form>
+-->
