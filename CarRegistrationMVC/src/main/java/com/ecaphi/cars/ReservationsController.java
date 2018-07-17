@@ -23,7 +23,6 @@ import com.ecaphi.cars.model.Car;
  */
 @Controller
 @RequestMapping("/cars")
-//@Import(AppConfig.class)
 public class ReservationsController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ReservationsController.class);
@@ -45,12 +44,12 @@ public class ReservationsController {
 		return "home";
 	}
 	
-	
 	/* Displays a form to input data. "Command" is a reserved request attribute, 
 	 * which is used to display object data into the form. 
 	 */
 	@GetMapping("/addCars")
-	public ModelAndView showform(){		return new ModelAndView("addCars", "command", new Car());
+	public ModelAndView showform(){	
+		return new ModelAndView("addCars", "command", new Car());
 	}
 	
 	/*Saves object into database. The @ModelAttribute puts request data into the model object,
@@ -65,20 +64,7 @@ public class ReservationsController {
 	// provides list of cars in model object
 	@GetMapping("/viewCars")
 	public ModelAndView viewCars() {
-
-	List<Car> list = this.reservationService.getAllCars();
-		
-		/*
-		List<Car> list = new ArrayList<Car>();
-		Car Car = new Car();
-		Car.setCarId(1);
-		Car.setManufacturer("1");
-		Car.setModel(1);
-		Car.setCity("Calgary");
-		Car.setRegistrationNumber("989");
-		list.add(Car);
-		*/
-		
+		List<Car> list = this.reservationService.getAllCars();
 		return new ModelAndView("viewCars", "list", list);
 	}
 	
@@ -93,7 +79,7 @@ public class ReservationsController {
 	
 	// updates model object
 	@PostMapping(value="/editAndsave")
-	public ModelAndView editsave(@ModelAttribute("car") Car car, BindingResult errors, Model model){
+	public ModelAndView editsave(@ModelAttribute("car") Car car){
 		this.reservationService.updateCar(car);
 		return new ModelAndView("redirect:/cars/viewCars");
 	}
@@ -103,6 +89,5 @@ public class ReservationsController {
 	public ModelAndView delete(@PathVariable int carId){
 		this.reservationService.deleteCar(carId);
 		return new ModelAndView("redirect:../viewCars");
-	}
-	
+	}	
 }
