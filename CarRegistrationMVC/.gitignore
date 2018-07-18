@@ -29,7 +29,7 @@ dependency-reduced-pom.xml
 dump.rdb
 interpolated*.xml
 lib/
-/target
+target/
 manifest.yml
 overridedb.*
 settings.xml
