@@ -34,7 +34,7 @@ manifest.yml
 overridedb.*
 settings.xml
 target
-*/target/*
+*/target/**
 transaction-logs
 .flattened-pom.xml
 secrets.yml
