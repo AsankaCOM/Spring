@@ -29,11 +29,11 @@ dependency-reduced-pom.xml
 dump.rdb
 interpolated*.xml
 lib/
-target/
 manifest.yml
 overridedb.*
 settings.xml
 target
+*/target/*
 transaction-logs
 .flattened-pom.xml
 secrets.yml
