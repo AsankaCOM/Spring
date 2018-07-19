@@ -49,7 +49,7 @@ public class ReservationsController {
 		return new ModelAndView("addCars", "command", new Car());
 	}
 	
-	/*Saves object into database. The @ModelAttribute puts request data into the model object,
+	/* Saves object into database. The @ModelAttribute puts request data into the model object,
 	 * You need to mention RequestMethod.POST because the default request is GET
 	 */
 	@RequestMapping(value="/addCars", method=RequestMethod.POST)
