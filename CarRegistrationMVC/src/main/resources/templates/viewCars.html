@@ -20,8 +20,8 @@
 		<td th:text="${car.model}"></td>
 		<td th:text="${car.city}"></td>
 		<td th:text="${car.registrationNumber}"></td>
-		<td><a th:href="@{|editCars/${car.carId}|}">Edit</a></td>  
-		<td><a th:href="@{|deleteCars/${car.carId}|}">Delete</a></td>  
+		<td><a href="#" th:href="@{|editCars/${car.carId}|}">Edit</a></td>
+		<td><a href="#" th:href="@{|deleteCars/${car.carId}|}">Delete</a></td>
 	</tr>
 	</c:forEach>
 </table>

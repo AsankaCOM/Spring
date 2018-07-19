@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name="cars")
@@ -13,8 +14,8 @@ public class Car {
 
 	@Id
 	@Column(name="CAR_ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int carId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer carId;
 	
 	@Column(name="MANUFACTURER")
 	private String manufacturer;
@@ -28,16 +29,12 @@ public class Car {
 	@Column(name="REG_NO")
 	private String registrationNumber;
 	
-	public int getCarId() {
+	public Integer getCarId() {
 		return carId;
 	}
 	
-	public void setCarId(int carId){
+	public void setCarId(Integer carId){
 		this.carId = carId;
-	}
-	
-	public void setCarId(String carId){
-		this.carId = Integer.parseInt(carId);
 	}
 	
 	public String getCity() {
@@ -71,9 +68,30 @@ public class Car {
 	public void setModel (String model){
 		this.model = model;
 	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this.equals(o)) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Car car = (Car) o;
+		return Objects.equals(registrationNumber, car.registrationNumber);
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(registrationNumber);
+	}
+
 	@Override
 	public String toString() {
-		return "Car [carId=" + carId + ", manufacturer=" + manufacturer + ", model=" + model + "]";
+		return "Car{" +
+				"carId=" + carId +
+				", manufacturer='" + manufacturer + '\'' +
+				", model='" + model + '\'' +
+				", city='" + city + '\'' +
+				", registrationNumber='" + registrationNumber + '\'' +
+				'}';
 	}
+
 }
