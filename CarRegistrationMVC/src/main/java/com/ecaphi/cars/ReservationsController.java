@@ -86,5 +86,6 @@ public class ReservationsController {
 	public ModelAndView delete(@PathVariable int carId){
 		this.reservationService.deleteCar(carId);
 		return new ModelAndView("redirect:../viewCars");
-	}	
+	}
+
 }
