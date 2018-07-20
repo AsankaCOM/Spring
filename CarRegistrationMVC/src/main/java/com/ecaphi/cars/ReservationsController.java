@@ -45,8 +45,9 @@ public class ReservationsController {
 	 * which is used to display object data into the form. 
 	 */
 	@GetMapping("/addCars")
-	public ModelAndView showform(){	
-		return new ModelAndView("addCars", "command", new Car());
+	public String showform(Model model){
+		model.addAttribute("command", new Car());
+		return "addCars";
 	}
 	
 	/* Saves object into database. The @ModelAttribute puts request data into the model object,
@@ -60,18 +61,20 @@ public class ReservationsController {
 	
 	// provides list of cars in model object
 	@GetMapping("/viewCars")
-	public ModelAndView viewCars() {
+	public String viewCars(Model model) {
 		List<Car> list = this.reservationService.getAllCars();
-		return new ModelAndView("viewCars", "list", list);
+		model.addAttribute("list", list);
+		return "viewCars";
 	}
 	
 	/* displays object data into form for the given car Id.
 	 * The @PathVariable puts URL data into the variable.
 	 */
 	@RequestMapping(value="/editCars/{carId}")
-	public ModelAndView edit(@PathVariable("carId") int carId){
+	public String edit(@PathVariable("carId") int carId, Model model){
 		Car car = this.reservationService.getCarById(carId);
-		return new ModelAndView("editCars", "car", car);
+		model.addAttribute("car", car);
+		return "editCars";
 	}
 	
 	// updates model object
