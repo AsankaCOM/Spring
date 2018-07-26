@@ -53,7 +53,7 @@ public class ReservationsController {
 	/* Saves object into database. The @ModelAttribute puts request data into the model object,
 	 * You need to mention RequestMethod.POST because the default request is GET
 	 */
-	@RequestMapping(value="/addCars", method=RequestMethod.POST)
+	@PostMapping(value="/addCars")
 	public ModelAndView save(@ModelAttribute(" ") Car car){
 		this.reservationService.addCar(car);
 		return new ModelAndView("redirect:viewCars"); //will redirect to viewCar request mapping
@@ -70,7 +70,7 @@ public class ReservationsController {
 	/* displays object data into form for the given car Id.
 	 * The @PathVariable puts URL data into the variable.
 	 */
-	@RequestMapping(value="/editCars/{carId}")
+	@GetMapping(value="/editCars/{carId}")
 	public String edit(@PathVariable("carId") int carId, Model model){
 		Car car = this.reservationService.getCarById(carId);
 		model.addAttribute("car", car);
@@ -85,7 +85,7 @@ public class ReservationsController {
 	}
 
 	//deletes record for given Car Id in the URL and redirects to /viewCar
-	@RequestMapping(value="/deleteCars/{carId}", method=RequestMethod.GET)
+	@GetMapping(value="/deleteCars/{carId}")
 	public ModelAndView delete(@PathVariable int carId){
 		this.reservationService.deleteCar(carId);
 		return new ModelAndView("redirect:../viewCars");
