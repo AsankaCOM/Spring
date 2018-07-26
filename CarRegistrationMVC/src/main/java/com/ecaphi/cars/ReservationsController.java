@@ -78,12 +78,12 @@ public class ReservationsController {
 	}
 	
 	// updates model object
-	@PostMapping(value="/editAndsave")
+	@PostMapping(value="/editCars/editAndsave")
 	public ModelAndView editsave(@ModelAttribute("car") Car car){
 		this.reservationService.updateCar(car);
 		return new ModelAndView("redirect:/cars/viewCars");
 	}
-	
+
 	//deletes record for given Car Id in the URL and redirects to /viewCar
 	@RequestMapping(value="/deleteCars/{carId}", method=RequestMethod.GET)
 	public ModelAndView delete(@PathVariable int carId){
