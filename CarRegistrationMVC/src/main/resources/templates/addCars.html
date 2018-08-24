@@ -2,7 +2,7 @@
 <html xmlns:th="http://wwww.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Add Car</title>
+<title>Add Car - [[${#httpServletRequest.remoteUser}]]</title>
 </head>
 <body>
 <h1>Add Car</h1>
@@ -36,14 +36,12 @@
 </table>
 
 </form:form>
+
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out"/>
+	</form>
+
+
+
 </body>
 </html>
-
-
-<!-- 
-<form th:action="@{/addCars}" method="post">
-      <input type="text" th:value="${foo.name}" name="name"/>
-      <input type="text" th:value="${bar.status}" name="status"/>
-      <button type="submit">Go</button>
-</form>
--->
